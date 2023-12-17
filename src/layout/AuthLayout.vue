@@ -1,6 +1,6 @@
 <template>
-	<div class="card">
-		Auth12312
+	<div class="container">
+		<RouterView />
 	</div>
 </template>
 
@@ -8,6 +8,4 @@
 
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
