@@ -12,16 +12,23 @@
 				<a href="#">Сообщения</a>
 			</li>
 			<li>
-				<a href="#">Выйти</a>
+				<a href="#" @click.prevent="logout">Выйти</a>
 			</li>
 		</ul>
 	</nav>
 </template>
 
-<script setup> 
+<script setup>
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
+const router = useRouter()
+const store = useStore()
 
+const logout = () => {
+
+	store.commit('auth/logout')
+	router.push('/auth')
+}
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
