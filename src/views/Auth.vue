@@ -14,7 +14,20 @@
   </form>
 </template>
 <script setup>
-import {useLoginForm} from '../use/login-form.js'
+import { useRoute } from 'vue-router'
+import { useStore } from 'vuex'
+import { error } from '../utils/error'
+import { useLoginForm } from '../use/login-form.js'
+const route = useRoute()
+const store = useStore()
+
+if (route.query.massege) {
+  store.dispatch('setMessage', {
+    value: error(route.query.massege),
+    type: 'warning'
+  })
+}
+
 const { onSubmit, isSubmitting, isTooManyAttempts, email, eError, eBlur, password, pError, pBlur } = useLoginForm();
 
 </script>

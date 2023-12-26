@@ -17,9 +17,13 @@ export function useLoginForm() {
             setTimeout(() => submitCount.value = 0, 2000)
         }
     });
-    const onSubmit = handleSubmit(values => {
-        store.dispatch('auth/login', values);
-        router.push('/')
+    const onSubmit = handleSubmit(async values => {
+        try {
+            await store.dispatch('auth/login', values);
+            router.push('/')
+        } catch (e) {
+            console.log(e)
+         }
     });
     return {
         onSubmit,
